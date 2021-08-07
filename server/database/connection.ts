@@ -1,6 +1,6 @@
 import { ConnectionManager } from 'typeorm';
 import { mainLogger } from '../../common/logger';
-import { Players } from './models/Player';
+import { Player } from './models/Player';
 
 const dbLogger = mainLogger.child({ module: 'database' });
 
@@ -13,7 +13,7 @@ connection
     port: 3306,
     username: 'root',
     database: 'redserver',
-    entities: [Players],
+    entities: [Player],
     synchronize: true,
   })
   .connect()

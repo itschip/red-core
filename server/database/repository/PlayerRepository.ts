@@ -1,9 +1,9 @@
 import { Connection, Repository } from 'typeorm';
-import { Players } from '../models/Player';
+import { Player } from '../models/Player';
 
-export default class PlayerRepository extends Repository<Players> {
+export default class PlayerRepository extends Repository<Player> {
   async createPlayer(username: string, identifier: string) {
-    const player = new Players();
+    const player = new Player();
     player.identifier = identifier;
     player.name = username;
     await this.save(player);
