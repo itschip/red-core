@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "*": ["types/*"]
+      "@typings/*": ["../types/*"]
     },
     "outDir": "./",
     "noImplicitAny": true,
