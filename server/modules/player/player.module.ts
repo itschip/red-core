@@ -3,13 +3,23 @@ import { ServerModule } from '../../decorators/ServerModule';
 import { getGameLicense } from '../../lib/misc/getGameLicense';
 import PlayerService from '../../services/player/player.service';
 
+interface ModuleProps {
+  service: PlayerService;
+  source: number;
+  identifier: string;
+}
+
 @ServerModule({ name: 'player' })
 @EventListener()
 export default class PlayerModule {
-  private service: PlayerService;
+  private readonly service: PlayerService;
+  public readonly source: number;
+  public readonly identifier: string;
 
-  constructor(service: PlayerService) {
+  constructor({ service, source, identifier }: ModuleProps) {
     this.service = service;
+    this.source = source;
+    this.identifier = identifier;
   }
 
   init(): Promise<boolean> {
@@ -18,11 +28,15 @@ export default class PlayerModule {
     });
   }
 
-  @Event('playerJoining')
-  playerJoining() {
-    const _source = global.source;
+  getSource(): number {
+    return this.source;
+  }
 
-    const identifier = getGameLicense(_source);
-    const username = GetPlayerName(_source.toString());
+  getIdentifier(): string {
+    return this.identifier;
+  }
+
+  kickPlayer(reason: string): void {
+    DropPlayer(this.source.toString(), reason);
   }
 }
