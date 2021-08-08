@@ -5,7 +5,7 @@ import PlayerModule from '../../modules/player/player.module';
 
 @EventListener()
 export default class PlayerService {
-  public core: RedCore;
+  core: RedCore;
 
   constructor(core: RedCore) {
     this.core = core;
