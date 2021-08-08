@@ -5,3 +5,7 @@ class _RedM {
     });
   }
 }
+
+const RedM = new _RedM();
+
+export default RedM;
