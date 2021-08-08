@@ -1,5 +1,6 @@
-import { EventListener } from '../../decorators/Events';
+import { Event, EventListener } from '../../decorators/Events';
 import { ServerModule } from '../../decorators/ServerModule';
+import { getGameLicense } from '../../lib/misc/getGameLicense';
 import PlayerService from '../../services/player/player.service';
 
 @ServerModule({ name: 'player' })
@@ -9,13 +10,19 @@ export default class PlayerModule {
 
   constructor(service: PlayerService) {
     this.service = service;
-
-    console.log(this.service.core.database);
   }
 
   init(): Promise<boolean> {
     return new Promise((res) => {
       res(true);
     });
+  }
+
+  @Event('playerJoining')
+  playerJoining() {
+    const _source = global.source;
+
+    const identifier = getGameLicense(_source);
+    const username = GetPlayerName(_source.toString());
   }
 }
