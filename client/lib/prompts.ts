@@ -2,7 +2,7 @@ class PromptGroup {
   private groupName: any;
   private groupId: number;
   private tick: any = null;
-  prompt: any;
+  private prompts: any[] = [];
 
   constructor(groupText: string, id: number) {
     this.groupId = id;
@@ -12,12 +12,13 @@ class PromptGroup {
   }
 
   createPrompt(text: string, control: number) {
-    this.prompt = Citizen.invokeNative('0x04F97DE45A519419');
+    // this.prompt = Citizen.invokeNative('0x04F97DE45A519419');
+    const prompt: any = Citizen.invokeNative('0x04F97DE45A519419');
 
-    console.log('THE PROMPT', this.prompt);
+    console.log('THE PROMPT', prompt);
 
     // PromptSetControlAction
-    Citizen.invokeNative('0xB5352B7494A08258', this.prompt, control);
+    Citizen.invokeNative('0xB5352B7494A08258', prompt, control);
 
     // local str = CreateVarString(10, 'LITERAL_STRING', str);
     // @ts-ignore
@@ -25,19 +26,23 @@ class PromptGroup {
     console.log('prompt string', str);
 
     // PromptSetText
-    Citizen.invokeNative('0x5DD02A8318420DD7', this.prompt, str);
+    Citizen.invokeNative('0x5DD02A8318420DD7', prompt, str);
 
     // PromptSetGroup
-    Citizen.invokeNative('0x2F11D3A254169EA4', this.prompt, this.groupId);
+    Citizen.invokeNative('0x2F11D3A254169EA4', prompt, this.groupId);
 
     // PromptRegisterEnd
     Citizen.invokeNative('0xF7AA2696A22AD8B9');
+
+    this.prompts.push({ prompt, text, control });
   }
 
   show() {
     // sets the prompt visible and enabled
-    Citizen.invokeNative('0x71215ACCFDE075EE', this.prompt, true);
-    Citizen.invokeNative('0x8A0FB4D03A630D21', this.prompt, true);
+    for (const { prompt, text, control } of this.prompts) {
+      Citizen.invokeNative('0x71215ACCFDE075EE', prompt, true);
+      Citizen.invokeNative('0x8A0FB4D03A630D21', prompt, true);
+    }
 
     this.tick = setTick(() => {
       Citizen.invokeNative('0xC65A45D4453C2627', this.groupId, this.groupName);
@@ -45,6 +50,11 @@ class PromptGroup {
   }
 
   hide() {
+    for (const { prompt, text, control } of this.prompts) {
+      Citizen.invokeNative('0x71215ACCFDE075EE', prompt, false);
+      Citizen.invokeNative('0x8A0FB4D03A630D21', prompt, false);
+    }
+
     clearTick(this.tick);
   }
 }
