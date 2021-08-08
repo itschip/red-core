@@ -50,6 +50,7 @@ class PromptGroup {
   }
 
   hide() {
+    // sets the prompt hidden and disabled
     for (const { prompt, text, control } of this.prompts) {
       Citizen.invokeNative('0x71215ACCFDE075EE', prompt, false);
       Citizen.invokeNative('0x8A0FB4D03A630D21', prompt, false);
