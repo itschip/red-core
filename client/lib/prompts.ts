@@ -1,4 +1,4 @@
-class PromptGroup {
+export default class PromptGroup {
   private groupName: any;
   private groupId: number;
   private tick: any = null;
