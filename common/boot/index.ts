@@ -20,11 +20,7 @@ export default abstract class RedCoreBase {
     this.logger.info('Bootstrapping REDCORE');
 
     this.modules.forEach((module) => {
-      module.init().then(() => {
-        this.logger.info(`module:${module.name} Initialized`);
-      }).catch(() => {
-        this.logger.error(`module:${module.name} Failed to initialize`)
-      })
-    })
+      this.logger.info(`module:${module.name} Initialized`);
+    });
   }
 }
