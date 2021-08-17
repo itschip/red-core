@@ -1,18 +1,23 @@
+type PromptProps = {
+  prompt: any;
+  text: string;
+  control: number;
+};
+
 export default class PromptGroup {
   private groupName: any;
   private groupId: number;
   private tick: any = null;
-  private prompts: any[] = [];
+  private prompts: PromptProps[] = [];
 
-  constructor(groupText: string, id: number) {
-    this.groupId = id;
+  constructor(groupText: string) {
+    this.groupId = Math.floor(Math.random() * 999999999999);
 
     // @ts-ignore
     this.groupName = CreateVarString(10, 'LITERAL_STRING', groupText);
   }
 
   createPrompt(text: string, control: number) {
-    // this.prompt = Citizen.invokeNative('0x04F97DE45A519419');
     const prompt: any = Citizen.invokeNative('0x04F97DE45A519419');
 
     console.log('THE PROMPT', prompt);
@@ -20,7 +25,6 @@ export default class PromptGroup {
     // PromptSetControlAction
     Citizen.invokeNative('0xB5352B7494A08258', prompt, control);
 
-    // local str = CreateVarString(10, 'LITERAL_STRING', str);
     // @ts-ignore
     const str: any = CreateVarString(10, 'LITERAL_STRING', text);
     console.log('prompt string', str);
