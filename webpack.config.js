@@ -71,6 +71,9 @@ const client = {
     minimize: true,
   },
   resolve: {
+    alias: {
+      '@lib/prompts': path.resolve(__dirname, 'client/lib/prompts.ts'),
+    },
     extensions: ['.ts', '.js'],
   },
   output: {
