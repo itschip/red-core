@@ -48,9 +48,9 @@ export default class PromptGroup {
       Citizen.invokeNative('0x8A0FB4D03A630D21', prompt, true);
     }
 
-    this.tick = setTick(() => {
+    this.tick = setInterval(() => {
       Citizen.invokeNative('0xC65A45D4453C2627', this.groupId, this.groupName);
-    });
+    }, 0);
   }
 
   hide() {
@@ -60,6 +60,6 @@ export default class PromptGroup {
       Citizen.invokeNative('0x8A0FB4D03A630D21', prompt, false);
     }
 
-    clearTick(this.tick);
+    clearInterval(this.tick);
   }
 }
