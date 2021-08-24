@@ -14,8 +14,6 @@ export class RedCore extends RedCoreBase {
   constructor() {
     super();
 
-    /* this.playerService = new PlayerService(this); */
-
     RedCore.container.getMany(ServerModuleToken).forEach((module) => {
       this.logger.info(`[module:${module.name}]:register`);
       this.modules.set(`server:modules:${module.name}`, module);
