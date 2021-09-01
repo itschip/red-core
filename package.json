@@ -13,6 +13,7 @@
     "@citizenfx/server": "^2.0.4194-1",
     "@types/node": "^16.3.1",
     "@types/reflect-metadata": "^0.1.0",
+    "esx.js": "^1.1.8",
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
     "reflect-metadata": "^0.1.13",

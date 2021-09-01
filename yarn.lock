@@ -634,6 +634,11 @@ estraverse@^5.2.0:
   resolved "https://registry.yarnpkg.com/estraverse/-/estraverse-5.2.0.tgz#307df42547e6cc7324d3cf03c155d5cdb8c53880"
   integrity sha512-BxbNGGNm0RyRYvUdHpIwv9IWzeM9XClbOxwoATuFdOE7ZE6wHL+HQ5T8hoPM+zHvmKzzsEqhgy0GrQ5X13afiQ==
 
+esx.js@^1.1.8:
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/esx.js/-/esx.js-1.1.8.tgz#ad9d8532e755a93d5ee5c45c2224a3f9068ea5a2"
+  integrity sha512-7/dwj/w99/ke2RJUFGqJbBA3Qf7Gj7t+GZ6ckCW406EQz/GiaVKvibJZ83GTigIH3JZaBwsj6zgu0AF8wqTd9w==
+
 events@^3.2.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/events/-/events-3.3.0.tgz#31a95ad0a924e2d2c419a813aeb2c4e878ea7400"
