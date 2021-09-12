@@ -13,6 +13,7 @@ export default class PromptGroup {
   constructor(groupText: string) {
     this.groupId = Math.floor(Math.random() * 999999999999);
 
+    console.log('hfkfjsdjdklasjasklafsdkfjklfj');
     // @ts-ignore
     this.groupName = CreateVarString(10, 'LITERAL_STRING', groupText);
   }
