@@ -10,6 +10,8 @@ interface Command {
   restricted?: boolean;
 }
 
+console.log('I hate reverting stuff');
+
 export const Command = ({ command, restricted }: Command) => {
   return function (target: unknown, key: string): void {
     if (!Reflect.hasMetadata('commands', target)) {
