@@ -46,7 +46,7 @@ export const CommandListener = function () {
             (...args: any[]) => {
               this[key](...args);
             },
-            restricted
+            restricted,
           );
         }
       }
